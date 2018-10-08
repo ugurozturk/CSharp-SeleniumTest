@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wallpaperDownloader", "wallpaperDownloader\wallpaperDownloader.csproj", "{6F5E7801-53E6-46B5-803D-AE4FDE1C71BA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6F5E7801-53E6-46B5-803D-AE4FDE1C71BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F5E7801-53E6-46B5-803D-AE4FDE1C71BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F5E7801-53E6-46B5-803D-AE4FDE1C71BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F5E7801-53E6-46B5-803D-AE4FDE1C71BA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1A776F44-1CC5-4002-870C-2B82B74FDF13}
+	EndGlobalSection
+EndGlobal
