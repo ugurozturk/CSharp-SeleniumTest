@@ -12,19 +12,22 @@ namespace wallpaperDownloader
     {
         private static void Main(string[] args)
         {
-            IWebDriver driver = new ChromeDriver();
-            Console.WriteLine("Getting in : https://alpha.wallhaven.cc/search?q=&categories=111&purity=100&atleast=1920x1080&sorting=views&order=desc&colors=999999&page=2");
+            ChromeOptions options = new ChromeOptions();
+            options.AddUserProfilePreference("profile.default_content_setting_values.images", 2);
+            options.AddArguments("headless");
+            IWebDriver driver = new ChromeDriver(options);
 
-            int scrollTime = 1;
+            int pageNumber = 1;
             while (true)
             {
-                driver.Navigate().GoToUrl("https://alpha.wallhaven.cc/search?q=&categories=111&purity=100&atleast=1920x1080&sorting=views&order=desc&colors=999999&page=2");
-                for (int i = 0; i < scrollTime; i++)
-                {
-                    ((IJavaScriptExecutor)driver).ExecuteScript("window.scrollTo(0, document.body.scrollHeight - 150)");
-                    Thread.Sleep(10000);
-                }
-                scrollTime++;
+                Console.WriteLine("Getting in : https://alpha.wallhaven.cc/search?q=&categories=111&purity=100&atleast=1920x1080&ratios=16x9&sorting=date_added&order=asc&colors=999999&page=" + pageNumber);
+                driver.Navigate().GoToUrl("https://alpha.wallhaven.cc/search?q=&categories=111&purity=100&atleast=1920x1080&ratios=16x9&sorting=date_added&order=asc&colors=999999&page=" + pageNumber);
+                //for (int i = 0; i < pageNumber; i++)
+                //{
+                //    ((IJavaScriptExecutor)driver).ExecuteScript("window.scrollTo(0, document.body.scrollHeight - 150)");
+                //    Thread.Sleep(10000);
+                //}
+                pageNumber++;
 
                 Console.WriteLine("Getting Urls");
                 IList<IWebElement> all = driver.FindElements(By.ClassName("preview"));
@@ -35,12 +38,11 @@ namespace wallpaperDownloader
                 }
                 try
                 {
-                    all_urls.Reverse();
                     foreach (var url in all_urls)
                     {
                         Console.WriteLine("Gettin in : " + url);
                         string name = url.Substring(url.LastIndexOf('/') + 1);
-                        string rootPath = @"D:\seleniumTest";
+                        string rootPath = @"D:\wallhaven16-9";
                         if (!File.Exists(rootPath + "\\" + name + ".png"))
                         {
                             driver.Navigate().GoToUrl(url);
